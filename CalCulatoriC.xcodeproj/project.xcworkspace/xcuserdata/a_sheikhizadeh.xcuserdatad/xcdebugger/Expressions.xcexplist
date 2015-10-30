@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "CalCulatoriC.SelectConverterView.pickerView (CalCulatoriC.SelectConverterView)(ObjectiveC.UIPickerView, didSelectRow : Swift.Int, inComponent : Swift.Int) -&gt; ():SelectConverterView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "selectedConvert">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "CalCulatoriC.SelectConverterView.convert (CalCulatoriC.SelectConverterView)() -&gt; ():SelectConverterView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fromLable.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

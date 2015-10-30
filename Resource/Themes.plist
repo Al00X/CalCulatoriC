@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>theme0</key>
+	<string>3A7BB6</string>
+	<key>theme1</key>
+	<string>5BB660</string>
+	<key>theme2</key>
+	<string>B6AE39</string>
+	<key>theme3</key>
+	<string>B63732</string>
+	<key>theme4</key>
+	<string>B64792</string>
+	<key>theme5</key>
+	<string>9537B6</string>
+	<key>theme6</key>
+	<string>C7C6C8</string>
+	<key>theme7</key>
+	<string>F09F35</string>
+	<key>theme8</key>
+	<string>48D6D9</string>
+	<key>theme9</key>
+	<string>48DBB9</string>
+	<key>theme10</key>
+	<string>B4E34D</string>
+	<key>theme11</key>
+	<string>F0CE0C</string>
+</dict>
+</plist>
