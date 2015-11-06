@@ -1,0 +1,5 @@
+version: "Apple Swift version 2.0 (swiftlang-700.0.59 clang-700.0.72)"
+options: "fe7c4b83b919d85ebb077ba98fc6224b"
+build_time: [499971483, 223731000]
+inputs: 
+	"/Users/a_sheikhizadeh/Documents/Xcode Projects/CalCulatoriC/CalCulatoriCTests/CalCulatoriCTests.swift": [489742264, 0]

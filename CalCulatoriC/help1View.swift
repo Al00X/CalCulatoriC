@@ -16,7 +16,7 @@ class help1View: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        var tapGesture = UITapGestureRecognizer(target: self, action: "tapGesture:")
+        let tapGesture = UITapGestureRecognizer(target: self, action: "tapGesture:")
         _VIEW.addGestureRecognizer(tapGesture)
         
         // Do any additional setup after loading the view.

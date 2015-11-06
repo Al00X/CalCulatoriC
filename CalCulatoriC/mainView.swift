@@ -12,6 +12,7 @@ import MessageUI
 class View6: UIViewController,  MFMailComposeViewControllerDelegate {
     
     
+    @IBOutlet var convertButton: UIButton!
     @IBOutlet var clearButton: UIButton!
     @IBOutlet var cclearButton: UIView!
     @IBOutlet var _view: UIView!
@@ -28,6 +29,7 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
     var negative:Bool = false
     var themeNum: Int! = 0
     var defaultUser = NSUserDefaults.standardUserDefaults()
+    internal var convertHoldedNum: String!
     
     @IBOutlet var lableMessage: UILabel!
     
@@ -40,11 +42,11 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
         }
         
         
-        var leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
-        var rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
-        var holdD = UILongPressGestureRecognizer(target: self, action: "handleHoldsD:")
-        var holdT = UILongPressGestureRecognizer(target: self, action: "handleHoldsT:")
-        var holdTheme = UILongPressGestureRecognizer(target: self, action: "handleTheme:")
+        let leftSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+        let rightSwipe = UISwipeGestureRecognizer(target: self, action: Selector("handleSwipes:"))
+        let holdD = UILongPressGestureRecognizer(target: self, action: "handleHoldsD:")
+        let holdT = UILongPressGestureRecognizer(target: self, action: "handleHoldsT:")
+        let holdTheme = UILongPressGestureRecognizer(target: self, action: "handleTheme:")
         
         leftSwipe.direction = UISwipeGestureRecognizerDirection.Left
         rightSwipe.direction = UISwipeGestureRecognizerDirection.Right
@@ -80,27 +82,32 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             
             for (var i = 1; i < 7; i++)
             {
-                var btn = self.view.viewWithTag(i) as? UIButton
+                let btn = self.view.viewWithTag(i) as? UIButton
                 
                 btn?.backgroundColor = UIColor(rgba: "#" + hexColor!)
             }
         }
         if (theme != nil)
         {
+            let pathW = NSBundle.mainBundle().pathForResource("Convert2Calculator_White", ofType: "png")
+            let pathB = NSBundle.mainBundle().pathForResource("Convert2Calculator_Black", ofType: "png")
+            let imgW: UIImage! = UIImage(contentsOfFile: pathW!)
+            let imgB: UIImage! = UIImage(contentsOfFile: pathB!)
+            
             if (theme == "Black")
             {
                 self.view.backgroundColor = UIColor.blackColor()
-                
+                convertButton.setImage(imgB, forState: .Normal)
                 for(var i = 10; i < 14; i++)
                 {
-                    var label = self.view.viewWithTag(i) as? UILabel
+                    let label = self.view.viewWithTag(i) as? UILabel
                     
                     label?.textColor = UIColor.whiteColor()
                     label?.backgroundColor = UIColor.blackColor()
                 }
-                for(var i = 14; i < 16; i++)
+                for(var i = 14; i < 17; i++)
                 {
-                    var btn = self.view.viewWithTag(i) as? UIButton
+                    let btn = self.view.viewWithTag(i) as? UIButton
                     
                     btn?.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                     btn?.backgroundColor = UIColor.blackColor()
@@ -109,18 +116,18 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             else
             {
                 self.view.backgroundColor = UIColor.whiteColor()
-                
+                convertButton.setImage(imgW, forState: .Normal)
                 for(var i = 10; i < 14; i++)
                 {
-                    var label = self.view.viewWithTag(i) as? UILabel
+                    let label = self.view.viewWithTag(i) as? UILabel
                     
                     label?.textColor = UIColor.blackColor()
                     label?.backgroundColor = UIColor.whiteColor()
                 }
                 
-                for(var i = 14; i < 16; i++)
+                for(var i = 14; i < 17; i++)
                 {
-                    var btn = self.view.viewWithTag(i) as? UIButton
+                    let btn = self.view.viewWithTag(i) as? UIButton
                     
                     btn?.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
                     btn?.backgroundColor = UIColor.whiteColor()
@@ -128,6 +135,10 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             }
         }
         
+        if (lable1.text == "0" || lable1.text == "-0")
+        {
+            clearButton.setTitle("AC", forState: .Normal)
+        }
         
     }
     
@@ -138,8 +149,9 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
     
     @IBAction func numberTouch(sender: UIButton) {
         
-        var button = sender
-        var num: String! = button.titleLabel?.text
+        let button = sender
+        let num: String! = button.titleLabel?.text
+        
         
         
         if ((lable1.text?.characters.count) < 15)
@@ -156,6 +168,7 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             {
                 lable1.text = lable1.text! + num
             }
+            clearButton.setTitle("C", forState: .Normal)
         }
         else
         {
@@ -166,17 +179,16 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
                 fadeAnimationLable(1.0, d: 0.5, fadeOut: false, lable: lableMessage)
                 fadeAnimationLable(2.0, d: 0.5, fadeOut: true, lable: lableMessage)
             }
-            
-            return
         }
         
+        defaultUser.setObject(lable1.text, forKey: "holdedNumber")
         
     }
     @IBAction func operatorTouch(sender: UIButton) {
         
         
-        var button = sender
-        var symbol = button.titleLabel?.text
+        let button = sender
+        _ = button.titleLabel?.text
         
         
         
@@ -196,7 +208,8 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             calculator()
         }
         
-        
+        defaultUser.setObject(lable1.text, forKey: "holdedNumber")
+        clearButton.setTitle("C", forState: .Normal)
         
     }
     
@@ -221,13 +234,13 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
     
     func calculator()
     {
-        var first = previewLable.text
-        var second = lable1.text
+        let first = previewLable.text
+        let second = lable1.text
         
-        var number1: Double = (first! as NSString).doubleValue
-        var number2: Double = (second! as NSString).doubleValue
+        let number1: Double = (first! as NSString).doubleValue
+        let number2: Double = (second! as NSString).doubleValue
         var result: Double!
-        var symbol = previewSymbol.text
+        let symbol = previewSymbol.text
         previewLable.text = lable1.text
         if (symbol == "+")
         {
@@ -272,7 +285,8 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
         
         calculator()
         
-        
+        defaultUser.setObject(lable1.text, forKey: "holdedNumber")
+        clearButton.setTitle("C", forState: .Normal)
     }
     
     func update()
@@ -289,7 +303,7 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             previewLable.text = "0"
             lable1.text = "0"
         }
-        if (lable1.text == "Error" || lable1.text == "error")
+        if (lable1.text == "Error" || lable1.text == "error" || lable1.text == "nan")
         {
             lableMessage.text = "Error"
             if (lableMessage == "Error")
@@ -300,10 +314,9 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             
             previewLable.text = "0"
             lable1.text = "0"
+            
+            defaultUser.setObject(lable1.text, forKey: "holdedNumber")
         }
-        
-        
-        
     }
     
     @IBAction func clearTouch(sender: UIButton)
@@ -320,10 +333,14 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             secondNumber = ""
             negative = false
             dot = false
+            clearButton.setTitle("AC", forState: .Normal)
+        }
+        if (previewLable.text == "0")
+        {
+            clearButton.setTitle("AC", forState: .Normal)
         }
         
-        
-        
+        defaultUser.setObject(lable1.text, forKey: "holdedNumber")
     }
     @IBAction func negativeTouch(sender: UIButton)
     {
@@ -338,7 +355,11 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             lable1.text = lable1.text?.stringByReplacingOccurrencesOfString("-", withString: "")
             negative = false
         }
-        
+        defaultUser.setObject(lable1.text, forKey: "holdedNumber")
+        if (lable1.text == "-0" || lable1.text == "0")
+        {
+            clearButton.setTitle("AC", forState: .Normal)
+        }
     }
     @IBAction func persentTouch(sender: UIButton)
     {
@@ -346,6 +367,8 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
         num = num / 100
         lable1.text = (num as NSNumber).stringValue
         
+        defaultUser.setObject(lable1.text, forKey: "holdedNumber")
+        clearButton.setTitle("C", forState: .Normal)
     }
     @IBAction func dotTouch(sender: UIButton)
     {
@@ -354,6 +377,7 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             if (lable1.text?.characters.count) < 14
             {
                 lable1.text = lable1.text! + "."
+                clearButton.setTitle("C", forState: .Normal)
             }
             else
             {
@@ -377,22 +401,22 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             }
         }
         
-        
-    }
-    
-    func alertView(alertView: UIAlertView!, clickedButtonAtIndex buttonIndex: Int) {
-        
-        
+        defaultUser.setObject(lable1.text, forKey: "holdedNumber")
     }
     
     @IBAction func creditTouch(sender: UIButton)
     {
+        let mail = MFMailComposeViewController()
         
-        var mail = MFMailComposeViewController()
-//        let deviceName
         let OSversion = UIDevice.currentDevice().systemVersion
+        let OSdevice = UIDevice.currentDevice().model
         var messageBody = "____________\nOS Version: "
         messageBody += OSversion
+        messageBody += "\n"
+        messageBody += "OS Model: "
+        messageBody += OSdevice
+        messageBody += "\n\n\n"
+        messageBody += "- WRITE YOUR MESSAGE HERE -"
         
         mail.setSubject("CalCulatoriC")
         mail.setToRecipients(["aloox@gmail.com"])
@@ -454,7 +478,7 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             }
             else
             {
-                lable1.text = String(lable1.text?.characters.dropLast())
+                lable1.text = String(lable1.text!.characters.dropLast())
             }
             
         }
@@ -473,6 +497,11 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             
             lable1.text = (num as NSNumber).stringValue
         }
+        
+        if (lable1.text == "nan")
+        {
+            lable1.text = "0"
+        }
     }
     func handleHoldsD(sender:UILongPressGestureRecognizer)
     {
@@ -487,6 +516,10 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             
             lable1.text = (num as NSNumber).stringValue
         }
+        if (lable1.text == "nan")
+        {
+            lable1.text = "0"
+        }
     }
     @IBAction func themesTouch(sender: UIButton)
     {
@@ -500,19 +533,19 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
         
         themeNum!++
         
-        var path = NSBundle.mainBundle().pathForResource("Themes", ofType: "plist")
-        var dic = NSDictionary(contentsOfFile: path!)
+        let path = NSBundle.mainBundle().pathForResource("Themes", ofType: "plist")
+        let dic = NSDictionary(contentsOfFile: path!)
         
         if (themeNum >= dic?.count)
         {
             themeNum = 0
         }
         NSLog((themeNum! as NSNumber).stringValue)
-        var hexColor = dic?.valueForKey("theme" + (themeNum! as NSNumber).stringValue) as? String
+        let hexColor = dic?.valueForKey("theme" + (themeNum! as NSNumber).stringValue) as? String
         
         for (var i = 1; i < 7; i++)
         {
-            var btn = self.view.viewWithTag(i) as? UIButton
+            let btn = self.view.viewWithTag(i) as? UIButton
             
             btn?.backgroundColor = UIColor(rgba: "#" + hexColor!)
         }
@@ -522,25 +555,28 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
     
     func handleTheme(sender: UILongPressGestureRecognizer)
     {
-        var white = UIColor(rgba: "#FFFFFF")
-        var black = UIColor(rgba: "#000000")
-        
+        _ = UIColor(rgba: "#FFFFFF")
+        _ = UIColor(rgba: "#000000")
+        let pathW = NSBundle.mainBundle().pathForResource("Convert2Calculator_White", ofType: "png")
+        let pathB = NSBundle.mainBundle().pathForResource("Convert2Calculator_Black", ofType: "png")
+        let imgW: UIImage! = UIImage(contentsOfFile: pathW!)
+        let imgB: UIImage! = UIImage(contentsOfFile: pathB!)
         if (sender.state == UIGestureRecognizerState.Began)
         {
             if (self.view.backgroundColor == UIColor.whiteColor())
             {
                 self.view.backgroundColor = UIColor.blackColor()
-                
+                convertButton.setImage(imgB, forState: .Normal)
                 for(var i = 10; i < 14; i++)
                 {
-                    var label = self.view.viewWithTag(i) as? UILabel
+                    let label = self.view.viewWithTag(i) as? UILabel
                     
                     label?.textColor = UIColor.whiteColor()
                     label?.backgroundColor = UIColor.blackColor()
                 }
                 for(var i = 14; i < 17; i++)
                 {
-                    var btn = self.view.viewWithTag(i) as? UIButton
+                    let btn = self.view.viewWithTag(i) as? UIButton
                     
                     btn?.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
                     btn?.backgroundColor = UIColor.blackColor()
@@ -551,10 +587,10 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
             else
             {
                 self.view.backgroundColor = UIColor.whiteColor()
-                
+                convertButton.setImage(imgW, forState: .Normal)
                 for(var i = 10; i < 14; i++)
                 {
-                    var label = self.view.viewWithTag(i) as? UILabel
+                    let label = self.view.viewWithTag(i) as? UILabel
                     
                     label?.textColor = UIColor.blackColor()
                     label?.backgroundColor = UIColor.whiteColor()
@@ -562,7 +598,7 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
                 
                 for(var i = 14; i < 17; i++)
                 {
-                    var btn = self.view.viewWithTag(i) as? UIButton
+                    let btn = self.view.viewWithTag(i) as? UIButton
                     
                     btn?.setTitleColor(UIColor.blackColor(), forState: UIControlState.Normal)
                     btn?.backgroundColor = UIColor.whiteColor()
@@ -589,6 +625,19 @@ class View6: UIViewController,  MFMailComposeViewControllerDelegate {
     @IBAction func toConvertTouch(sender: UIButton)
     {
         defaultUser.setObject(lable1.text, forKey: "holdedNumber")
+        
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let des1 = SelectConverterView()
+        if (segue.identifier == "ShowConverter")
+        {
+            des1.calculatorHoldedNum = lable1.text
+        }
+    }
+    override func viewWillAppear(animated: Bool) {
+        lable1.text = (defaultUser.valueForKey("holdedNumber") as! String)
+    }
+    
 }
 

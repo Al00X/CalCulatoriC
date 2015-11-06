@@ -3,10 +3,29 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "SelectConverterView.convert() -&gt; ():SelectConverterView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "fromLable.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "CalCulatoriC.SelectConverterView.pickerView (CalCulatoriC.SelectConverterView)(ObjectiveC.UIPickerView, didSelectRow : Swift.Int, inComponent : Swift.Int) -&gt; ():SelectConverterView.swift">
          <PersistentStrings>
             <PersistentString
                value = "selectedConvert">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "SelectConverterView.viewDidLoad() -&gt; ():SelectConverterView.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "calculatorHoldedNum">
+            </PersistentString>
+            <PersistentString
+               value = "fromLable.text">
             </PersistentString>
          </PersistentStrings>
       </ContextState>

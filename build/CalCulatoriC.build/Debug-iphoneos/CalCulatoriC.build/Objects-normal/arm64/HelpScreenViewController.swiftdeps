@@ -1,0 +1,225 @@
+### Swift dependencies file v0 ###
+provides-top-level:
+- "HelpScreenViewController"
+provides-nominal:
+- "C12CalCulatoriC24HelpScreenViewController"
+provides-member:
+- ["C12CalCulatoriC24HelpScreenViewController", ""]
+provides-dynamic-lookup:
+- "didReceiveMemoryWarning"
+- "tapGestureRecognizer"
+- "viewDidLoad"
+- "helpImageView"
+- "hide"
+depends-top-level:
+- "AnyObject"
+- "HelpScreenViewController"
+- !private "BooleanLiteralType"
+- "UIGestureRecognizerDelegate"
+- "UITapGestureRecognizer"
+- "UIViewController"
+- "UIImageView"
+depends-member:
+- ["PSs9AnyObject", "didReceiveMemoryWarning"]
+- !private ["PSs9AnyObject", "dismissViewControllerAnimated"]
+- ["PSs9AnyObject", "gestureRecognizer"]
+- ["PSs9AnyObject", "gestureRecognizerShouldBegin"]
+- ["PSs9AnyObject", "helpImageView"]
+- ["PSs9AnyObject", "hide"]
+- ["PSs9AnyObject", "init"]
+- ["PSs9AnyObject", "tapGestureRecognizer"]
+- ["PSs9AnyObject", "viewDidLoad"]
+- ["PSs9AnyObject", ""]
+- ["PSs11CVarArgType", "didReceiveMemoryWarning"]
+- !private ["PSs11CVarArgType", "dismissViewControllerAnimated"]
+- ["PSs11CVarArgType", "gestureRecognizer"]
+- ["PSs11CVarArgType", "gestureRecognizerShouldBegin"]
+- ["PSs11CVarArgType", "helpImageView"]
+- ["PSs11CVarArgType", "hide"]
+- ["PSs11CVarArgType", "init"]
+- ["PSs11CVarArgType", "tapGestureRecognizer"]
+- ["PSs11CVarArgType", "viewDidLoad"]
+- ["PSs11CVarArgType", ""]
+- ["PSs23CustomStringConvertible", "didReceiveMemoryWarning"]
+- !private ["PSs23CustomStringConvertible", "dismissViewControllerAnimated"]
+- ["PSs23CustomStringConvertible", "gestureRecognizer"]
+- ["PSs23CustomStringConvertible", "gestureRecognizerShouldBegin"]
+- ["PSs23CustomStringConvertible", "helpImageView"]
+- ["PSs23CustomStringConvertible", "hide"]
+- ["PSs23CustomStringConvertible", "init"]
+- ["PSs23CustomStringConvertible", "tapGestureRecognizer"]
+- ["PSs23CustomStringConvertible", "viewDidLoad"]
+- ["PSs23CustomStringConvertible", ""]
+- ["PSs9Equatable", "didReceiveMemoryWarning"]
+- !private ["PSs9Equatable", "dismissViewControllerAnimated"]
+- ["PSs9Equatable", "gestureRecognizer"]
+- ["PSs9Equatable", "gestureRecognizerShouldBegin"]
+- ["PSs9Equatable", "helpImageView"]
+- ["PSs9Equatable", "hide"]
+- ["PSs9Equatable", "init"]
+- ["PSs9Equatable", "tapGestureRecognizer"]
+- ["PSs9Equatable", "viewDidLoad"]
+- ["PSs9Equatable", ""]
+- ["PSs8Hashable", "didReceiveMemoryWarning"]
+- !private ["PSs8Hashable", "dismissViewControllerAnimated"]
+- ["PSs8Hashable", "gestureRecognizer"]
+- ["PSs8Hashable", "gestureRecognizerShouldBegin"]
+- ["PSs8Hashable", "helpImageView"]
+- ["PSs8Hashable", "hide"]
+- ["PSs8Hashable", "init"]
+- ["PSs8Hashable", "tapGestureRecognizer"]
+- ["PSs8Hashable", "viewDidLoad"]
+- ["PSs8Hashable", ""]
+- ["C12CalCulatoriC24HelpScreenViewController", "AnyObject"]
+- ["C12CalCulatoriC24HelpScreenViewController", "UIImageView"]
+- ["C12CalCulatoriC24HelpScreenViewController", "UITapGestureRecognizer"]
+- ["C12CalCulatoriC24HelpScreenViewController", "deinit"]
+- ["C12CalCulatoriC24HelpScreenViewController", "didReceiveMemoryWarning"]
+- !private ["C12CalCulatoriC24HelpScreenViewController", "dismissViewControllerAnimated"]
+- ["C12CalCulatoriC24HelpScreenViewController", "gestureRecognizer"]
+- ["C12CalCulatoriC24HelpScreenViewController", "gestureRecognizerShouldBegin"]
+- ["C12CalCulatoriC24HelpScreenViewController", "helpImageView"]
+- ["C12CalCulatoriC24HelpScreenViewController", "hide"]
+- ["C12CalCulatoriC24HelpScreenViewController", "init"]
+- ["C12CalCulatoriC24HelpScreenViewController", "tapGestureRecognizer"]
+- ["C12CalCulatoriC24HelpScreenViewController", "viewDidLoad"]
+- ["PSo8NSCoding", "didReceiveMemoryWarning"]
+- !private ["PSo8NSCoding", "dismissViewControllerAnimated"]
+- ["PSo8NSCoding", "gestureRecognizer"]
+- ["PSo8NSCoding", "gestureRecognizerShouldBegin"]
+- ["PSo8NSCoding", "helpImageView"]
+- ["PSo8NSCoding", "hide"]
+- ["PSo8NSCoding", "init"]
+- ["PSo8NSCoding", "tapGestureRecognizer"]
+- ["PSo8NSCoding", "viewDidLoad"]
+- ["PSo8NSCoding", ""]
+- ["PSo26NSExtensionRequestHandling", "didReceiveMemoryWarning"]
+- !private ["PSo26NSExtensionRequestHandling", "dismissViewControllerAnimated"]
+- ["PSo26NSExtensionRequestHandling", "gestureRecognizer"]
+- ["PSo26NSExtensionRequestHandling", "gestureRecognizerShouldBegin"]
+- ["PSo26NSExtensionRequestHandling", "helpImageView"]
+- ["PSo26NSExtensionRequestHandling", "hide"]
+- ["PSo26NSExtensionRequestHandling", "init"]
+- ["PSo26NSExtensionRequestHandling", "tapGestureRecognizer"]
+- ["PSo26NSExtensionRequestHandling", "viewDidLoad"]
+- ["PSo26NSExtensionRequestHandling", ""]
+- ["CSo8NSObject", "AnyObject"]
+- ["CSo8NSObject", "UIImageView"]
+- ["CSo8NSObject", "UITapGestureRecognizer"]
+- ["CSo8NSObject", "didReceiveMemoryWarning"]
+- !private ["CSo8NSObject", "dismissViewControllerAnimated"]
+- ["CSo8NSObject", "gestureRecognizer"]
+- ["CSo8NSObject", "gestureRecognizerShouldBegin"]
+- ["CSo8NSObject", "helpImageView"]
+- ["CSo8NSObject", "hide"]
+- ["CSo8NSObject", "init"]
+- ["CSo8NSObject", "tapGestureRecognizer"]
+- ["CSo8NSObject", "viewDidLoad"]
+- ["PSo16NSObjectProtocol", "didReceiveMemoryWarning"]
+- !private ["PSo16NSObjectProtocol", "dismissViewControllerAnimated"]
+- ["PSo16NSObjectProtocol", "gestureRecognizer"]
+- ["PSo16NSObjectProtocol", "gestureRecognizerShouldBegin"]
+- ["PSo16NSObjectProtocol", "helpImageView"]
+- ["PSo16NSObjectProtocol", "hide"]
+- ["PSo16NSObjectProtocol", "init"]
+- ["PSo16NSObjectProtocol", "tapGestureRecognizer"]
+- ["PSo16NSObjectProtocol", "viewDidLoad"]
+- ["PSo16NSObjectProtocol", ""]
+- ["PSo21UIAppearanceContainer", "didReceiveMemoryWarning"]
+- !private ["PSo21UIAppearanceContainer", "dismissViewControllerAnimated"]
+- ["PSo21UIAppearanceContainer", "gestureRecognizer"]
+- ["PSo21UIAppearanceContainer", "gestureRecognizerShouldBegin"]
+- ["PSo21UIAppearanceContainer", "helpImageView"]
+- ["PSo21UIAppearanceContainer", "hide"]
+- ["PSo21UIAppearanceContainer", "init"]
+- ["PSo21UIAppearanceContainer", "tapGestureRecognizer"]
+- ["PSo21UIAppearanceContainer", "viewDidLoad"]
+- ["PSo21UIAppearanceContainer", ""]
+- ["PSo18UIContentContainer", "didReceiveMemoryWarning"]
+- !private ["PSo18UIContentContainer", "dismissViewControllerAnimated"]
+- ["PSo18UIContentContainer", "gestureRecognizer"]
+- ["PSo18UIContentContainer", "gestureRecognizerShouldBegin"]
+- ["PSo18UIContentContainer", "helpImageView"]
+- ["PSo18UIContentContainer", "hide"]
+- ["PSo18UIContentContainer", "init"]
+- ["PSo18UIContentContainer", "tapGestureRecognizer"]
+- ["PSo18UIContentContainer", "viewDidLoad"]
+- ["PSo18UIContentContainer", ""]
+- !private ["PSo27UIGestureRecognizerDelegate", "dismissViewControllerAnimated"]
+- ["PSo27UIGestureRecognizerDelegate", "gestureRecognizer"]
+- ["PSo27UIGestureRecognizerDelegate", "gestureRecognizerShouldBegin"]
+- ["PSo27UIGestureRecognizerDelegate", ""]
+- ["CSo11UIResponder", "AnyObject"]
+- ["CSo11UIResponder", "UIImageView"]
+- ["CSo11UIResponder", "UITapGestureRecognizer"]
+- ["CSo11UIResponder", "didReceiveMemoryWarning"]
+- !private ["CSo11UIResponder", "dismissViewControllerAnimated"]
+- ["CSo11UIResponder", "gestureRecognizer"]
+- ["CSo11UIResponder", "gestureRecognizerShouldBegin"]
+- ["CSo11UIResponder", "helpImageView"]
+- ["CSo11UIResponder", "hide"]
+- ["CSo11UIResponder", "init"]
+- ["CSo11UIResponder", "tapGestureRecognizer"]
+- ["CSo11UIResponder", "viewDidLoad"]
+- ["PSo16UIStateRestoring", "didReceiveMemoryWarning"]
+- !private ["PSo16UIStateRestoring", "dismissViewControllerAnimated"]
+- ["PSo16UIStateRestoring", "gestureRecognizer"]
+- ["PSo16UIStateRestoring", "gestureRecognizerShouldBegin"]
+- ["PSo16UIStateRestoring", "helpImageView"]
+- ["PSo16UIStateRestoring", "hide"]
+- ["PSo16UIStateRestoring", "init"]
+- ["PSo16UIStateRestoring", "tapGestureRecognizer"]
+- ["PSo16UIStateRestoring", "viewDidLoad"]
+- ["PSo16UIStateRestoring", ""]
+- ["PSo18UITraitEnvironment", "didReceiveMemoryWarning"]
+- !private ["PSo18UITraitEnvironment", "dismissViewControllerAnimated"]
+- ["PSo18UITraitEnvironment", "gestureRecognizer"]
+- ["PSo18UITraitEnvironment", "gestureRecognizerShouldBegin"]
+- ["PSo18UITraitEnvironment", "helpImageView"]
+- ["PSo18UITraitEnvironment", "hide"]
+- ["PSo18UITraitEnvironment", "init"]
+- ["PSo18UITraitEnvironment", "tapGestureRecognizer"]
+- ["PSo18UITraitEnvironment", "viewDidLoad"]
+- ["PSo18UITraitEnvironment", ""]
+- ["CSo16UIViewController", "AnyObject"]
+- ["CSo16UIViewController", "UIImageView"]
+- ["CSo16UIViewController", "UITapGestureRecognizer"]
+- ["CSo16UIViewController", "didReceiveMemoryWarning"]
+- !private ["CSo16UIViewController", "dismissViewControllerAnimated"]
+- ["CSo16UIViewController", "gestureRecognizer"]
+- ["CSo16UIViewController", "gestureRecognizerShouldBegin"]
+- ["CSo16UIViewController", "helpImageView"]
+- ["CSo16UIViewController", "hide"]
+- ["CSo16UIViewController", "init"]
+- ["CSo16UIViewController", "tapGestureRecognizer"]
+- ["CSo16UIViewController", "viewDidLoad"]
+- ["CSo16UIViewController", ""]
+depends-nominal:
+- "PSs9AnyObject"
+- "PSs11CVarArgType"
+- "PSs23CustomStringConvertible"
+- "PSs9Equatable"
+- "PSs8Hashable"
+- "C12CalCulatoriC24HelpScreenViewController"
+- "PSo8NSCoding"
+- "PSo26NSExtensionRequestHandling"
+- "CSo8NSObject"
+- "PSo16NSObjectProtocol"
+- "PSo21UIAppearanceContainer"
+- "PSo18UIContentContainer"
+- "PSo27UIGestureRecognizerDelegate"
+- "CSo11UIResponder"
+- "PSo16UIStateRestoring"
+- "PSo18UITraitEnvironment"
+- "CSo16UIViewController"
+depends-dynamic-lookup:
+depends-external:
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Swift.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/UIKit.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Foundation.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Darwin.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/Dispatch.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/ObjectiveC.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreGraphics.swiftmodule"
+- "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/swift/iphoneos/arm64/CoreImage.swiftmodule"
+interface-hash: "cd368741b8846015a60e63a33a56b80d"

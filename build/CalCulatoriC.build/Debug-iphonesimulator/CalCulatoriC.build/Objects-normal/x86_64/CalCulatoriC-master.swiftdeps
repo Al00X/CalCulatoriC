@@ -1,0 +1,11 @@
+version: "Apple Swift version 2.0 (swiftlang-700.0.59 clang-700.0.72)"
+options: "3956039494d648e0cda2539468d9f1ed"
+build_time: [500050165, 402769000]
+inputs: 
+	"/Users/a_sheikhizadeh/Documents/Xcode Projects/CalCulatoriC/CalCulatoriC/HelpScreenViewController.swift": [499435980, 0]
+	"/Users/a_sheikhizadeh/Documents/Xcode Projects/CalCulatoriC/CalCulatoriC/help1View.swift": [500050006, 0]
+	"/Users/a_sheikhizadeh/Documents/Xcode Projects/CalCulatoriC/CalCulatoriC/AppDelegate.swift": [489819636, 0]
+	"/Users/a_sheikhizadeh/Documents/Xcode Projects/CalCulatoriC/CalCulatoriC/UIColorExtension.swift": [499430072, 0]
+	"/Users/a_sheikhizadeh/Documents/Xcode Projects/CalCulatoriC/CalCulatoriC/SelectConverterView.swift": [500050165, 0]
+	"/Users/a_sheikhizadeh/Documents/Xcode Projects/CalCulatoriC/CalCulatoriC/mainView.swift": [500049808, 0]
+	"/Users/a_sheikhizadeh/Documents/Xcode Projects/CalCulatoriC/CalCulatoriC/SelectUnitView.swift": [499870377, 0]

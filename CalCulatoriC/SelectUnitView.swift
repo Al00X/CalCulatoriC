@@ -30,9 +30,9 @@ class SelectUnitView: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        var selectedConvert: String = (defaultUser.valueForKey("selectedConvert") as! String)
+        let selectedConvert: String = (defaultUser.valueForKey("selectedConvert") as! String)
         
-        var path = NSBundle .mainBundle().pathForResource(selectedConvert, ofType: "plist")
+        let path = NSBundle .mainBundle().pathForResource(selectedConvert, ofType: "plist")
         dict = NSDictionary(contentsOfFile: path!)
     }
     
@@ -62,12 +62,12 @@ class SelectUnitView: UITableViewController {
         // **COLOR SET**
         // Start
         
-        var themeN: Int! = defaultUser.integerForKey("themeNumber")
-        var theme: String! = defaultUser.stringForKey("Theme")
-        var path = NSBundle.mainBundle().pathForResource("Themes", ofType: "plist")
-        var dic = NSDictionary(contentsOfFile: path!)
-        var hexColor = dic?.valueForKey("theme" + (themeN! as NSNumber).stringValue) as? String
-        var lable = cell.viewWithTag(100) as? UILabel
+        let themeN: Int! = defaultUser.integerForKey("themeNumber")
+        let theme: String! = defaultUser.stringForKey("Theme")
+        let path = NSBundle.mainBundle().pathForResource("Themes", ofType: "plist")
+        let dic = NSDictionary(contentsOfFile: path!)
+        _ = dic?.valueForKey("theme" + (themeN! as NSNumber).stringValue) as? String
+        let lable = cell.viewWithTag(100) as? UILabel
         
         if (theme == "Black")
         {
@@ -86,7 +86,7 @@ class SelectUnitView: UITableViewController {
         // **UNIT NAMES SET**
         // START
         
-        var row: Int = dict.count
+        let row: Int = dict.count
         
         if (indexPath.row == row)
         {
@@ -95,7 +95,7 @@ class SelectUnitView: UITableViewController {
         }
         else
         {
-            var unitList: AnyObject? = dict.allKeys[indexPath.row]
+            let unitList: AnyObject? = dict.allKeys[indexPath.row]
             lable?.text = (unitList as! String)
         }
         
@@ -107,11 +107,11 @@ class SelectUnitView: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        var row: Int = dict.count
-        var selectedIndexPath = self.tableView.indexPathForSelectedRow?.row
+        let row: Int = dict.count
+        let selectedIndexPath = self.tableView.indexPathForSelectedRow?.row
         if (row != selectedIndexPath)
         {
-            var unitList: AnyObject? = dict.allKeys[selectedIndexPath!]
+            let unitList: AnyObject? = dict.allKeys[selectedIndexPath!]
                 
 //            parentVC.selectedFromUnitView = (unitList as String)
             self.delegate?.unitSelectionChanged(unitList as! String)

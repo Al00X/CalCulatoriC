@@ -18,9 +18,11 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
     var toUnit: String?
     var firstUnitClicked: Bool? = true
     var selectedFromUnitView: String! = nil
+    internal var calculatorHoldedNum: String!
     
 
     
+    @IBOutlet var calculatorButton: UIButton!
     @IBOutlet var pickerView: UIPickerView!
     @IBOutlet var unitButton2: UIButton!
     @IBOutlet var unitButton1: UIButton!
@@ -36,7 +38,14 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
         // Do any additional setup after loading the view.
 //        var timer = NSTimer.scheduledTimerWithTimeInterval(0.01, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
         
-        let calcNum: AnyObject = defaultUser.valueForKey("holdedNumber") as! String
+        let swipeGestureL = UISwipeGestureRecognizer(target: self, action: "swipeHandle:")
+        let swipeGestureR = UISwipeGestureRecognizer(target: self, action: "swipeHandle:")
+        
+        swipeGestureL.direction = .Left
+        swipeGestureR.direction = .Right
+        
+        fromLable.addGestureRecognizer(swipeGestureL)
+        fromLable.addGestureRecognizer(swipeGestureR)
         
         if let _ = defaultUser.valueForKey("savedFrom") {
             fromUnit = defaultUser.valueForKey("savedFrom") as? String
@@ -56,19 +65,26 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
         
         firstUnitClicked = defaultUser.valueForKey("firstSelect") as? Bool
         
-        var themeN: Int! = defaultUser.integerForKey("themeNumber")
-        var theme: String! = defaultUser.stringForKey("Theme")
+        fromLable.text = defaultUser.valueForKey("holdedNumber") as? String
         
-        var path = NSBundle.mainBundle().pathForResource("Themes", ofType: "plist")
-        var dic = NSDictionary(contentsOfFile: path!)
+        let themeN: Int! = defaultUser.integerForKey("themeNumber")
+        let theme: String! = defaultUser.stringForKey("Theme")
+        
+        let path = NSBundle.mainBundle().pathForResource("Themes", ofType: "plist")
+        let dic = NSDictionary(contentsOfFile: path!)
+        
+        let pathW = NSBundle.mainBundle().pathForResource("Calculator2Convert_White", ofType: "png")
+        let pathB = NSBundle.mainBundle().pathForResource("Calculator2Convert_Black", ofType: "png")
+        let imgW: UIImage! = UIImage(contentsOfFile: pathW!)
+        let imgB: UIImage! = UIImage(contentsOfFile: pathB!)
         
         if (themeN != nil && themeN <= dic?.count)
         {
-            var hexColor = dic?.valueForKey("theme" + (themeN as NSNumber).stringValue) as? String
+            let hexColor = dic?.valueForKey("theme" + (themeN as NSNumber).stringValue) as? String
             
             for (var i = 20; i < 23; i++)
             {
-                var btn = self.view.viewWithTag(i) as? UIButton
+                let btn = self.view.viewWithTag(i) as? UIButton
                 
                 btn?.backgroundColor = UIColor(rgba: "#" + hexColor!)
             }
@@ -77,6 +93,7 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
         {
             if (theme == "Black")
             {
+                calculatorButton.setBackgroundImage(imgB, forState: .Normal)
                 self.view.backgroundColor = UIColor.blackColor()
                 
                 fromLable.textColor = UIColor.whiteColor()
@@ -86,6 +103,7 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
             }
             else
             {
+                calculatorButton.setBackgroundImage(imgW, forState: .Normal)
                 self.view.backgroundColor = UIColor.whiteColor()
                 
                 fromLable.textColor = UIColor.blackColor()
@@ -104,7 +122,7 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
         var row: Int!
         for (var i: Int = 0; i < converterNames.count; i++)
         {
-            var now: String = converterNames[i]
+            let now: String = converterNames[i]
             
             if (now == selectedConvert)
             {
@@ -112,12 +130,18 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
                 continue
             }
         }
+//        if (calculatorHoldedNum != nil)
+//        {
+//            fromLable.text = calculatorHoldedNum
+//        }else{
+//            fromLable.text = "0"
+//        }
+        defaultUser.setValue(toLable.text, forKey: "holdedNumber")
         
         pickerView.selectRow(row, inComponent: 0, animated: true)
         
         unitAbrev()
         
-        fromLable.text = calcNum as? String
         convert()
     }
     
@@ -147,6 +171,13 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
         }
         return attString
     }
+    func swipeHandle(sender: UISwipeGestureRecognizer)
+    {
+        if (fromLable.text != "0")
+        {
+            fromLable.text = String(fromLable.text!.characters.dropLast())
+        }
+    }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
@@ -166,12 +197,14 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
         unitConfigure2()
         unitAbrev()
         convert()
+        
+        defaultUser.setValue(toLable.text, forKey: "holdedNumber")
     }
     
     @IBAction func numberTouch(sender: UIButton)
     {
-        var button = sender
-        var num: String! = button.titleLabel?.text
+        let button = sender
+        let num: String! = button.titleLabel?.text
         
         
         if (fromLable.text?.characters.count) < 15
@@ -195,6 +228,8 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
         }
         
         convert()
+        
+        defaultUser.setValue(toLable.text, forKey: "holdedNumber")
     }
     
     @IBAction func dotTouch(sender: AnyObject)
@@ -206,6 +241,8 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
                 fromLable.text = fromLable.text! + "."
             }
         }
+        
+        defaultUser.setValue(toLable.text, forKey: "holdedNumber")
     }
     
     @IBAction func negativeTouch(sender: AnyObject)
@@ -221,6 +258,8 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
             fromLable.text = fromLable.text?.stringByReplacingOccurrencesOfString("-", withString: "")
             negative = false
         }
+        
+        defaultUser.setValue(toLable.text, forKey: "holdedNumber")
     }
     
     @IBAction func flipTouch(sender: AnyObject)
@@ -238,6 +277,8 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
         unitButton2.setTitle(fromSign, forState: UIControlState.Normal)
         fromUnit = unit2
         toUnit = unit1
+        
+        defaultUser.setValue(toLable.text, forKey: "holdedNumber")
     }
     
     @IBAction func clearTouch(sender: AnyObject)
@@ -245,6 +286,9 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
         fromLable.text = "0"
         toLable.text = "0"
         negative = false
+        
+        defaultUser.setValue(toLable.text, forKey: "holdedNumber")
+        convert()
     }
     
     func unitAbrev()
@@ -345,6 +389,8 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
             convertresult = convertresult / factorT
         }
         toLable.text = (convertresult as NSNumber).stringValue
+        
+        defaultUser.setValue(toLable.text, forKey: "holdedNumber")
     }
     
     @IBAction func unit1Clicked(sender: AnyObject)
@@ -465,10 +511,12 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
         selectedFromUnitView = newUnit
         unitAbrev()
 
+        defaultUser.setValue(toLable.text, forKey: "holdedNumber")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destination1 = segue.destinationViewController as! SelectUnitView
+        
         if (segue.identifier == "toSelectUnitView")
         {
             destination1.firstUnitSelected = true
@@ -477,10 +525,16 @@ class SelectConverterView: UIViewController, UIPickerViewDataSource, UIPickerVie
         destination1.delegate = self
     }
     @IBAction func backButtonTouch(sender: AnyObject) {
+        let destination2 = View6()
+        destination2.convertHoldedNum = toLable.text
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func toCalculatorTouch(sender: UIButton)
     {
         defaultUser.setValue(toLable.text, forKey: "holdedNumber")
     }
+    override func viewWillAppear(animated: Bool) {
+        convert()
+    }
+    
 }
